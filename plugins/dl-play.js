@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import FormData from "form-data";
 
-let handler = async (m, { conn, usedPrefix, command }) => {
+let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 	switch (command) {
 		case "play":
 			{
