@@ -4,23 +4,23 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
     if (!text) throw `*Enter a song name!*\n\n*Example:*\n${usedPrefix + command} behold by Hillsong`
     try {
         let kyuu = await fetch(`https://api.agatz.xyz/api/ytsearch?message=${text}`);
-        let tylor = await fetch(`https://api.agatz.xyz/api/ytmp3?url=${kyuu.data[0].url}`);
+        let tylor = await fetch(`https://exonity.tech/api/ytdlp2-faster?apikey=adminsepuh&url=${kyuu.data[0].url}`);${kyuu.data[0].url}`);
 
         // Prepare message template
         let doc = {
             audio: {
-                url: tylor.data[0].downloadUrl
+                url: tylor.result.audio
             },
             mimetype: 'audio/mpeg',
-            fileName: `${tylor.data[0].title}.mp3`,
+            fileName: `${tylor.result.title}.mp3`,
             contextInfo: {
                 externalAdReply: {
                     showAdAttribution: true,
                     mediaType: 2,
-                    mediaUrl: `${tylor.data[0].downloadUrl}`,
+                    mediaUrl: `${tylor.result.audio}`,
                     title: `FIRE MD`,
-                    body: `${tylor.data[0].title}.mp3`,
-                    sourceUrl: `${tylor.data[0].downloadUrl}`,
+                    body: `${tylor.result.title}.mp3`,
+                    sourceUrl: `${tylor.result.audio}`,
                     thumbnail: `https://i.imgur.com/tStJm2M.jpeg`,
                 }
             }
