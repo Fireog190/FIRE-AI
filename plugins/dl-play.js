@@ -5,7 +5,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 	switch (command) {
 		case "play":
 			{
-				if (!text) throw ("What song do you want to download ");
+				if (!text) throw `*Enter a song name!*\n\n*Example:*\n${usedPrefix + command} behold by Hillsong`
 				let kyuu = await fetch(`https://api.agatz.xyz/api/ytsearch?message=${text}`);
 				let tylor = await fetch(`https://api.agatz.xyz/api/ytmp3?url=${kyuu.data[0].url}`);
 				await conn.sendMessage(
