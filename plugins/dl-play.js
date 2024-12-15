@@ -40,9 +40,5 @@ handler.help = ['play'].map(v => v + ' <query>')
 handler.tags = ['downloader']
 handler.command = /^(play|mp3|ytmusic)$/i
 
-handler.exp = 0
-handler.limit = false
-handler.register = false
-
 export default handler
 
